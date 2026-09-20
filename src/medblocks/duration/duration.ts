@@ -171,6 +171,7 @@ export default class MbDuration extends EhrElement {
         .min=${this.min}
         ?required=${this.required}
         placeholder=${this.placeholder}
+        label=${this.formatDuration(a)}
         help-text=${this.hidelabel ? '' : this.formatDuration(a)}
         .value=${this._state[a] || ''}
         @sl-input=${(e: CustomEvent) => this.handleInput(a, e)}
