@@ -118,7 +118,6 @@ export default class MbMultimedia extends EhrElement {
           accept="image/*"
           name="image"
           id="file"
-          aria-label=${this.label}
           @change=${this._handleChange}
         />
       </p>
