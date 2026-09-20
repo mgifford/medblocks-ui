@@ -127,10 +127,20 @@ export default class CodedTextButtons extends CodedTextElement {
               </sl-button>`
           )}
         </div>
+        <!--
+          Hidden value-carrier used only for required-field validation
+          (see reportValidity()). It is not an editable control, so keep it out
+          of the tab order and the accessibility tree; users choose via the
+          buttons above. aria-label provides a name for the case where a browser
+          still focuses it during validation reporting.
+        -->
         <input
           .value=${this.data?.code || ''}
           style="transform:scale(0.025);position:absolute;top:40px;opacity:0.1"
           name="input"
+          tabindex="-1"
+          aria-hidden="true"
+          aria-label=${this.label || 'Selection'}
           ?required=${this.required}
         />
       </div>
