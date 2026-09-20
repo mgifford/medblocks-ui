@@ -110,16 +110,15 @@ export default class MbMultimedia extends EhrElement {
   render() {
     return html`
       <p>
-        ${this.label
-          ? html`<label for="file" style="font-weight: 600;">${this.label}</label>`
-          : null}
-        <input
-          type="file"
-          accept="image/*"
-          name="image"
-          id="file"
-          @change=${this._handleChange}
-        />
+        <label style="font-weight: 600;">
+          ${this.label ? html`<span>${this.label}</span>` : null}
+          <input
+            type="file"
+            accept="image/*"
+            name="image"
+            @change=${this._handleChange}
+          />
+        </label>
       </p>
       ${this.data?.alternatetext || ''}
       ${this.loading
