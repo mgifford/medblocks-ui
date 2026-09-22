@@ -17,6 +17,16 @@ dependency.
 - Verified fixes for the standalone items are on a branch:
   https://github.com/mgifford/medblocks-ui/tree/a11y/accessible-names
 
+## Documents in this folder
+
+- [ISSUE-1-missing-accessible-name.md](ISSUE-1-missing-accessible-name.md) — form controls with no accessible name
+- [ISSUE-2-invalid-aria-menuitem.md](ISSUE-2-invalid-aria-menuitem.md) — invalid `aria-checked` on `role="menuitem"`
+- [ISSUE-3-contrast-unit-labels.md](ISSUE-3-contrast-unit-labels.md) — unit-label colour contrast
+- [ISSUE-4-duplicate-ids.md](ISSUE-4-duplicate-ids.md) — duplicate `id`s across instances
+- [ISSUE-5-no-live-region-dynamic-form.md](ISSUE-5-no-live-region-dynamic-form.md) — dynamic changes not announced (no live region)
+- [PRIORITIZATION.md](PRIORITIZATION.md) — ranking and per-fix source investigation
+- Ready-to-file GitHub issue drafts: [github-issues/](github-issues/)
+
 ## Context that shapes the recommendations: Shoelace is end-of-life
 
 medblocks-ui depends on `@shoelace-style/shoelace@2.0.0-beta.71`, a pre-1.0
@@ -39,7 +49,7 @@ verified (axe `label` 20->4, `label-title-only` 16->2; no new violations).
 | ISSUE-1 (part) | mb-duration unit inputs unnamed (only `help-text`, no label) | 4.1.2, 1.3.1 | Critical | c818388 |
 | (from ISSUE-1) | mb-buttons/-multiple nameless hidden proxy input, keyboard-focusable | 4.1.2, 2.4.3 | High | 181db3e (removed from a11y tree) |
 
-Details: `ISSUE-1-missing-accessible-name.md`. Fixes are HTML-first (native
+Details: [ISSUE-1-missing-accessible-name.md](ISSUE-1-missing-accessible-name.md). Fixes are HTML-first (native
 `<label>`, not ARIA, per the "use HTML before ARIA" principle) and were verified
 with real keyboard testing and accessible-name computation.
 
@@ -53,7 +63,7 @@ This is the most important framework gap for a clinical form: adding a
 medication-order group inserts 7+ fields silently with no announcement and no
 focus move (verified live). Fix is a single polite live region owned by
 `mb-form` plus focus management in the repeatable add/remove paths. Details:
-`ISSUE-5-no-live-region-dynamic-form.md`. Offered as a follow-up PR if the
+[ISSUE-5-no-live-region-dynamic-form.md](ISSUE-5-no-live-region-dynamic-form.md). Offered as a follow-up PR if the
 maintainers want it.
 
 ## Group C: rooted in the archived Shoelace beta (report only)
@@ -70,7 +80,7 @@ it), so no patch is offered. The durable fix is the Shoelace decision above.
 | (naming) | `sl-checkbox` inner input naming (mb-checkbox, mb-checkbox-any) | 4.1.2 | Medium | `sl-checkbox` beta.71 |
 | ISSUE-3 | Unit labels fail colour contrast (mb-quantity, mb-proportion) | 1.4.3 | Medium | Shoelace `select__label` theming (part) |
 
-Details: `ISSUE-2-invalid-aria-menuitem.md`, `ISSUE-3-contrast-unit-labels.md`.
+Details: [ISSUE-2-invalid-aria-menuitem.md](ISSUE-2-invalid-aria-menuitem.md), [ISSUE-3-contrast-unit-labels.md](ISSUE-3-contrast-unit-labels.md).
 
 ## Group D: usage/structural (lower priority)
 
@@ -78,7 +88,7 @@ Details: `ISSUE-2-invalid-aria-menuitem.md`, `ISSUE-3-contrast-unit-labels.md`.
 |---|---|---|---|
 | ISSUE-4 | Components emit duplicate `id`s across instances (fixed default ids) | 4.1.1 (obsolete) / affects 1.3.1, 4.1.2 associations | Medium |
 
-Details: `ISSUE-4-duplicate-ids.md`. Works today only because shadow-root id
+Details: [ISSUE-4-duplicate-ids.md](ISSUE-4-duplicate-ids.md). Works today only because shadow-root id
 scoping; fragile. Worth fixing alongside any label work that uses id/for.
 
 ## Not yet covered (gaps in this review, for transparency)
